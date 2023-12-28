@@ -237,6 +237,7 @@ void calculateAge()
                 printf("[0] Back to menu!\n");
                 printf("----------------------------\n");
                 main();
+                break;
             }
             else if(birthYear < 1206 || birthYear > 1498){
                     clearScreen();
@@ -253,6 +254,7 @@ void calculateAge()
                 printf("[0] Back to menu!\n");
                 printf("----------------------------\n");
                 main();
+                break;
             }
             else if(birthMonth < 1 || birthMonth > 12){
                     clearScreen();
@@ -269,6 +271,7 @@ void calculateAge()
                 printf("[0] Back to menu!\n");
                 printf("----------------------------\n");
                 main();
+                break;
             } 
             else if(birthDay < 1 || birthDay > 31){
                 printf("%sInvalid input!%s\n", RED_TEXT, RESET);
@@ -358,6 +361,7 @@ void Calendar()
                 printf("[0] Back to menu!\n");
                 printf("----------------------------\n");
                 main();
+                break;
             }
             else if(year < 1206 || year > 1498){
                 clearScreen();
@@ -374,6 +378,7 @@ void Calendar()
                 printf("[0] Back to menu!\n");
                 printf("----------------------------\n");
                 main();
+                break;
             }
             else if(month < 1 || month > 12){
                 clearScreen();
@@ -471,7 +476,7 @@ int main()
         if(input == 0){
             clearScreen();
             printf("bye!");
-            break;
+            exit(0);
         }
         else if(input == 1){
             clearScreen();
@@ -509,6 +514,7 @@ int main()
                     printf("[0] Back to menu!\n");
                     printf("----------------------------\n");
                     main();
+                    break;
                 }
                 else if(sYear < 1206 || sYear > 1498){
                     clearScreen();
@@ -525,6 +531,7 @@ int main()
                     printf("[0] Back to menu!\n");
                     printf("----------------------------\n");
                     main();
+                    break;
                 }
                 else if(sMonth < 1 || sMonth > 12){
                     clearScreen();
@@ -618,8 +625,15 @@ int main()
         }while(gYear != 0 || gMonth != 0 || gDay != 0);
         }
         else if(input2 == 0){
+                clearScreen();
+                printf("[0] Back to menu!\n");
+                printf("----------------------------\n");
+                main();
+            }
+            
+        else{
             clearScreen();
-            printf("[0] Back to menu!\n");
+            printf("%sInvalid input!%s\n", RED_TEXT, RESET);
             printf("----------------------------\n");
             main();
         }
