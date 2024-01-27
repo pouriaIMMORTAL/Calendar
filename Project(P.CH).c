@@ -36,9 +36,9 @@ int determineDaycode(int year, int month)
     int daysInMonths[] = {0, 31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29};
     int daycode = (year * 365 + (year / 4) + 1) % 7;
 
-    if (year >= 1206 && year <= 1218)
+    if (year >= 1208 && year <= 1218 && year != 1211 && year != 1215)
     {
-        daycode += 2;
+        daycode = (daycode - 1) % 7;
     }
 
     if (year == 1219)
@@ -53,7 +53,7 @@ int determineDaycode(int year, int month)
 
     for (int i = 1; i < month; i++)
     {
-        daycode = (daycode + daysInMonths[i]) % 7;
+        daycode = (daycode + days_in_shamsi_month[i]) % 7;
     }
 
     return daycode;
