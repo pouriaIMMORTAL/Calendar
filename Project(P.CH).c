@@ -53,7 +53,7 @@ int determineDaycode(int year, int month)
 
     for (int i = 1; i < month; i++)
     {
-        daycode = (daycode + days_in_shamsi_month[i]) % 7;
+        daycode = (daycode + daysInMonths[i]) % 7;
     }
 
     return daycode;
