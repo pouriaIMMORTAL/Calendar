@@ -348,8 +348,8 @@ void calculateAge()
 void Calendar()
 {
 
-    int year, month;
-
+    int year, month, day;
+    
         do{
             printf("[0] Back to menu\n");
             printf("----------------------------\n");
@@ -371,6 +371,9 @@ void Calendar()
             }
 
             printf("Enter month(1-12):");
+
+            do{
+            
             scanf("%d", &month);
 
             if(month == 0){
@@ -380,23 +383,31 @@ void Calendar()
                 main();
                 break;
             }
-            else if(month < 1 || month > 12){
+
+            if(month < 1 || month > 12){
                 clearScreen();
                 printf("----------------------------\n");
                 printf("%sInvalid input!%s\n", RED_TEXT, RESET);
                 printf("----------------------------\n");
-                Calendar();
+                printf("Enter month(1-12):");
+                scanf("%d", &month);
             }
+            
+            }while(!(month >= 1 && month <= 12));
+
+            printf("Enter day(1-31):");
+            scanf("%d", &day);
 
             clearScreen();
             int daysInMonths[] = {0, 31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29};
-  
+
             if (isLeapYear(year) == 1)
             {
                 int daysInMonths[] = {0, 31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 30};
             }
 
             switch(month){
+
                 case 1:
                     printf("%s          Farvardin         %s\n", WHITE_BACKGROUND_GREEN_TEXT, RESET);
                     break;
@@ -433,11 +444,12 @@ void Calendar()
                 case 12:
                     printf("%s            Esfand          %s\n", WHITE_BACKGROUND_BLUE_TEXT, RESET);
                     break;
-            }
-            int dayCode = determineDaycode(year, month);
 
+            }
+            
             printf("%s  SH  YE  DO  SE  CH  PA%s  %sJO%s\n", GREEN_TEXT, RESET, RED_TEXT, RESET);
 
+            int dayCode = determineDaycode(year, month);
 
             for(int day = 1; day <= dayCode % 7; day++){
                 printf("    ");
@@ -451,8 +463,14 @@ void Calendar()
 
                 printf("%4d", day);
             }
+            
+            char *days_of_week_persian[] = {"SHANBE", "YEKSHANBE", "DOSHANBE", "SESHANBE", "CHAHARSHANBE", "PANJESHANBE", "JOOMEH"};
+            int weekDay = (dayCode + day - 1) % 7;
 
             printf("\n----------------------------\n");
+            printf("%dth - %s is monasebat", day, days_of_week_persian[weekDay]);
+            printf("\n----------------------------\n");
+
         }while(year != 0 || month != 0);
         
         
